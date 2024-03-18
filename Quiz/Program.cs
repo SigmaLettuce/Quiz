@@ -9,10 +9,13 @@
         {
             // Storing typed string method inputName in a string variable.
             string nameRead = inputName();
+            string selectLevel = LevelSelect();
+
             Console.Clear();
             Console.WriteLine($"Kia Ora, {nameRead}");
-            
-            
+
+            // Level selecting
+            Console.WriteLine(selectLevel);
         }
         static String inputName() // method reads the name entered and is stored in the variable "nameRead"
         {
@@ -29,79 +32,87 @@
         static String leaderboard() // Create a process which saves users scores and creates leaderboard. (optional, scrapped later)
         {
             var podium = new List<string> {} or ..
+
+
         }
         */
 
-        static Int32 scoreRecieved() // This method gives user their score recieved via .. 
+        static String LevelSelect()
         {
-            
-        }
+            char keyBind;
+            Console.WriteLine("Please select your quiz' level.\neasy.\t[press e]\nnormal.\t[press n]\nhard.\t[press h]"); // non-case sensitive. Convert input if uppercase to lowercase ascii character variable
 
-        
+            // Console.Clear();
 
-        // Username stuff end
+            // input
 
-        /* static String levelHierachy()
-        {
-            // Level Easy
+            // isNullorEmpty
 
-            string[] lvlEasy = {"What is the number one in Te Reo?\nA) Tahi\nB) Kai\nC) Kakariki", // Q1
-                                "In Maori, which mean hello and goodbye? (In order)\nA) Kia Ora, Haere Ra\nB) Etu, Enoho\nC) Haere Ra, Ora Kia", // Q2
-                                "What is the word for family?\nA) Vin Diesel\nB) Whanau\nC) Whero", // Q3
-                                "What is a pit oven called in Te Reo?\nA) Hangi \nB) Iwi\nC) Pango", // Q4
-                                "In Maori, what is a book called??\nA) Pukapuka\nB) Tekau\nC) Waka" // Final
-                               };
-
-
-
-            // Commented out other levels to return to later.
-
-            /*
-            string[] lvlMed = {""};
-            string[] lvlDiff = { };
-            */
-
-            
-        /*
-
-            char lvlSelected;
-            
             do
             {
-                Console.WriteLine("Please proceed with level desired, input keybind.\nEasy (E, Q5)\nMedium (M, Q9)\nDifficult (T, Q14)"); // Chose T (why not)
-                lvlSelected = Console.ReadLine().ToUpper()[0];
+                keyBind = Console.ReadLine().ToLower()[0]; // keybind
 
-            } while ();
+                string easySelected = easyLevel();
+                string normalSelected = normalLevel();
+                string hardSelected = hardLevel();
 
-            //end do
+                switch (keyBind)
+                {
+                    case 'e':
+                        Console.Clear();
+                    break;
+                    case 'n':
+                        Console.Clear();
+                    break;
+                    case 'h':
+                        Console.Clear();
+                    break;
+                    default:
+                        Console.WriteLine("The key input is invalid. Please input the keys provided."); // invalid prompt
+                        Console.Clear(); // clears to prevent stacking of error msg
+                    break;
+                }
+            } while (keyBind.);
+
+            return 
+        }
+
+        static Int32 scoreRecieved() // This method gives user their score recieved via .. 
+        {
+            /*
+            
+            
+             
+            */
+
+
+        }
+
+        static String easyLevel() // easy levels typed method consists of 7 questions.
+        {
+            
+        }
+
+        static String normalLevel() // normal levels typed method consists of 10 questions.
+        {
+
+        }
+
+        static String hardLevel() // hard levels typed method consists of 17 questions.
+        {
 
         }
         
 
-        // Commented out if statement. Using switches. Not deleted to review.
+        // switch. used for keybind input
 
-        /*
-    if (lvlSelected == 'E')
-    {
-
-    }
-    else
-    {
-        if (lvlSelected == 'M')
-        {
-
-        }
-        else
-        {
-            if (lvlSelected == 'T')
-            {
-
-            }
-        }
-    }
-
- */
+      
 
 
-    }
+    // Username stuff end
+
+
+
+
+}
 }
