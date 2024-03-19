@@ -10,7 +10,7 @@
             // Storing typed string method inputName in a string variable.
             string nameRead = inputName();
             string selectLevel = LevelSelect();
-            string quizLists = levelQuizLists();
+            List<string> quizLists = levelQuizLists();
 
             Console.Clear();
             Console.WriteLine($"Kia Ora, {nameRead}");
@@ -19,7 +19,7 @@
             Console.WriteLine(selectLevel);
 
             //
-
+            
         }
 
         static String inputName() // method reads the name entered and is stored in the variable "nameRead"
@@ -117,7 +117,7 @@
         }
         */
 
-        static String levelQuizLists() // This method contains all the questions and answers in lists.
+        static List<string> levelQuizLists() // This method contains all the questions and answers in lists.
         {
             // easy level consists of 7 questions.
 
@@ -140,7 +140,7 @@
 
             // easy level answers.
 
-            var easyLvlAnswers = new List<string> { };
+            var easyLvlAnswers = new List<string> { "" };
 
             // normal level answers.
 
@@ -152,7 +152,10 @@
 
             // Lists that store all the text containing the questions and answers
 
-            return 
+            return ; // returns 
+
+            // no static variable
+            
         }
     }
 
