@@ -1,4 +1,6 @@
-﻿namespace Quiz
+﻿using System.Net.Security;
+
+namespace Quiz
 {
     internal class Program
     {
@@ -10,7 +12,8 @@
             // Storing typed string method inputName in a string variable.
             string nameRead = inputName();
             string selectLevel = LevelSelect();
-            List<string> quizLists = levelQuizLists();
+
+            
 
             Console.Clear();
             Console.WriteLine($"Kia Ora, {nameRead}");
@@ -18,7 +21,8 @@
             // Level selecting
             Console.WriteLine(selectLevel);
 
-            //
+            // Lists
+            levelQuizLists();
             
         }
 
@@ -117,8 +121,9 @@
         }
         */
 
-        static List<string> levelQuizLists() // This method contains all the questions and answers in lists.
+        static new List<string> levelQuizLists() // This method contains all the questions and answers in lists.
         {
+
             // easy level consists of 7 questions.
 
             var easyLvlQuestions = new List<string> { "What is the number one in Te Reo?\nA) Tahi\nB) Kai\nC) Kakariki", // Q1
@@ -140,7 +145,7 @@
 
             // easy level answers.
 
-            var easyLvlAnswers = new List<string> { "" };
+            var easyLvlAnswers = new List<string> { };
 
             // normal level answers.
 
@@ -152,10 +157,15 @@
 
             // Lists that store all the text containing the questions and answers
 
-            return ; // returns 
+            // return; 
 
-            // no static variable
-            
+            // no static variables
+
+
+            // stores lists in array
+            var lvlStorage = new List<string> { };
+
+            return lvlStorage;
         }
     }
 
