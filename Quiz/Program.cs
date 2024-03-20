@@ -11,18 +11,20 @@ namespace Quiz
         {
             // Storing typed string method inputName in a string variable.
             string nameRead = inputName();
-            string selectLevel = LevelSelect();
-
+            char selectLevel = LevelSelect();
+            
             
 
             Console.Clear();
             Console.WriteLine($"Kia Ora, {nameRead}");
+            Thread.Sleep(1200);
+            Console.Clear();
 
             // Level selecting
             Console.WriteLine(selectLevel);
 
             // Lists
-            levelQuizLists();
+            // levelQuizLists();
             
         }
 
@@ -48,13 +50,11 @@ namespace Quiz
         }
         */
 
-        static String LevelSelect() // Level selecting method
+        static Char LevelSelect() // Level selecting method
         {
             // Variables
-            string keyBindstr;
+
             char keyBind;
-
-
 
             Console.WriteLine("Please select your quiz' level.\neasy.\t[press e]\nnormal.\t[press n]\nhard.\t[press h]"); // non-case sensitive. Convert input if uppercase to lowercase ascii character variable
 
@@ -69,7 +69,9 @@ namespace Quiz
             do
             {
                 keyBind = Console.ReadLine().ToLower()[0]; // keybind reading.
-                keyBindstr = keyBind + "";
+                
+
+             
 
                 // calls method for Questions and Answers.
 
@@ -103,9 +105,9 @@ namespace Quiz
                         Console.Clear(); // clears to prevent stacking of error msg
                         break;
                 }
-            } while (string.IsNullOrEmpty(keyBindstr)); // while // string is null or empty, run switch.
+            } while (char.IsWhiteSpace(keyBind)); // while // string is null or empty, run switch.
 
-            return keyBindstr; // returns key entered.
+            return keyBind; // returns key entered.
         }
 
         /*
@@ -121,7 +123,7 @@ namespace Quiz
         }
         */
 
-        static new List<string> levelQuizLists() // This method contains all the questions and answers in lists.
+        static String[][] levelQuizLists(string[][] lvlStorage) // This method contains all the questions and answers in lists.
         {
 
             // easy level consists of 7 questions.
@@ -163,7 +165,7 @@ namespace Quiz
 
 
             // stores lists in array
-            var lvlStorage = new List<string> { };
+            
 
             return lvlStorage;
         }
