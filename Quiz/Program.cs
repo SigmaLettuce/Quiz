@@ -1,5 +1,8 @@
 ﻿using System.Net.Security;
 
+
+// Magnus, ac148904
+
 namespace Quiz
 {
     internal class Program
@@ -15,10 +18,10 @@ namespace Quiz
             
             
 
-            Console.Clear();
+            
             Console.WriteLine($"Kia Ora, {nameRead}");
-            Thread.Sleep(1200);
             Console.Clear();
+
 
             // Level selecting
             Console.WriteLine(selectLevel);
@@ -50,10 +53,12 @@ namespace Quiz
         }
         */
 
+
+
         static Char LevelSelect() // Level selecting method
         {
             // Variables
-
+            string keybindString;
             char keyBind;
 
             Console.WriteLine("Please select your quiz' level.\neasy.\t[press e]\nnormal.\t[press n]\nhard.\t[press h]"); // non-case sensitive. Convert input if uppercase to lowercase ascii character variable
@@ -69,9 +74,7 @@ namespace Quiz
             do
             {
                 keyBind = Console.ReadLine().ToLower()[0]; // keybind reading.
-                
-
-             
+                keybindString = keyBind + ""; // converts to string as character in dowhile does not have the ability to utilise "isNullOrEmpty"
 
                 // calls method for Questions and Answers.
 
@@ -82,30 +85,31 @@ namespace Quiz
                     case 'e':
                         // Easy selected
                         Console.WriteLine("You have selected easy. ");
-                        Console.Clear();
+                        
 
                        
                         break;
                     case 'n':
                         //Normal selected
                         Console.WriteLine("You have selected normal. ");
-                        Console.Clear();
+                        
 
                       
                         break;
                     case 'h':
                         //Hard selected
                         Console.WriteLine("You have selected hard. ");
-                        Console.Clear();
+                        
                         
                         
                         break;
                     default:
                         Console.WriteLine("The key input is invalid. Please input the keys provided."); // invalid prompt
-                        Console.Clear(); // clears to prevent stacking of error msg
+                         // clears to prevent stacking of error msg
+
                         break;
                 }
-            } while (char.IsWhiteSpace(keyBind)); // while // string is null or empty, run switch.
+            } while (string.IsNullOrWhiteSpace(keybindString)); // while string is null or whitespace it will continue running the default for the switch.
 
             return keyBind; // returns key entered.
         }
