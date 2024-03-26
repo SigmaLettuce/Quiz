@@ -9,22 +9,20 @@ namespace Quiz
     {
 
         // Hello
-
+        // arrray legnth
         static void Main(string[] args) // main method
         {
             // Storing typed string method inputName in a string variable.
             string nameRead = inputName();
-            char selectLevel = LevelSelect();
-            
-            
-
-            
+       
             Console.WriteLine($"Kia Ora, {nameRead}");
+            Thread.Sleep(700);
             Console.Clear();
 
+            LevelSelect();
 
             // Level selecting
-            Console.WriteLine(selectLevel);
+            // Console.WriteLine(selectLevel);
 
             // Lists
             // levelQuizLists();
@@ -55,7 +53,7 @@ namespace Quiz
 
 
 
-        static Char LevelSelect() // Level selecting method
+        static string LevelSelect() // Level selecting method
         {
             // Variables
             string keybindString;
@@ -104,6 +102,7 @@ namespace Quiz
                         
                         break;
                     default:
+
                         Console.WriteLine("The key input is invalid. Please input the keys provided."); // invalid prompt
                          // clears to prevent stacking of error msg
 
@@ -111,8 +110,13 @@ namespace Quiz
                 }
             } while (string.IsNullOrWhiteSpace(keybindString)); // while string is null or whitespace it will continue running the default for the switch.
 
-            return keyBind; // returns key entered.
+            return keybindString; // returns key entered.
         }
+
+         
+
+
+        //if keybind[i]
 
         /*
         static Int32 scoreRecieved() // This method gives user their score recieved via .. 
@@ -132,7 +136,7 @@ namespace Quiz
 
             // easy level consists of 7 questions.
 
-            var easyLvlQuestions = new List<string> { "What is the number one in Te Reo?\nA) Tahi\nB) Kai\nC) Kakariki", // Q1
+            String[] easyLvlQuestions = { "What is the number one in Te Reo?\nA) Tahi\nB) Kai\nC) Kakariki", // Q1
                             "In Maori, which mean hello and goodbye? (In order)\nA) Kia Ora, Haere Ra\nB) Etu, Enoho\nC) Haere Ra, Ora Kia", // Q2
                             "What is the word for family?\nA) Vin Diesel\nB) Whanau\nC) Whero", // Q3
                             "What is a pit oven called in Te Reo?\nA) Hangi \nB) Iwi\nC) Pango", // Q4
@@ -141,25 +145,23 @@ namespace Quiz
 
             // normal level consists of 10 questions.
 
-            var normalLvlQuestions = new List<string> { };
+            String[] normalLvlQuestions = { };
 
             // hard level consists of 17 questions.
 
-
-            var hardLvlQuestions = new List<string> { };
-
+            String[] hardLvlQuestions = { };
 
             // easy level answers.
 
-            var easyLvlAnswers = new List<string> { };
+            String[] easyLvlAnswers = { };
 
             // normal level answers.
 
-            var normalLvlAnswers = new List<string> { };
+            String[] normalLvlAnswers = { };
 
             // hard level answers.
 
-            var hardLvlAnswers = new List<string> { };
+            String[] hardLvlAnswers = { };
 
             // Lists that store all the text containing the questions and answers
 
@@ -169,9 +171,10 @@ namespace Quiz
 
 
             // stores lists in array
-            
 
-            return lvlStorage;
+            String[][] quizListArray = {easyLvlQuestions, easyLvlAnswers, normalLvlQuestions, normalLvlAnswers, hardLvlQuestions, hardLvlAnswers};
+
+            return quizListArray;
         }
     }
 
