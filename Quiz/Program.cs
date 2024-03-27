@@ -38,6 +38,14 @@ namespace Quiz
 
             // input 
             nameEntered = Console.ReadLine();
+
+            // string variable for boundary
+            int nameEnteredLimit = nameEntered.Length;
+
+            if (nameEntered )
+            {
+
+            }
             return nameEntered;
         }
 
@@ -84,8 +92,10 @@ namespace Quiz
                     case 'e':
                         // Easy selected
                         Console.WriteLine("You have selected easy. ");
-                        
+                        Thread.Sleep(700);
+                        Console.Clear();
 
+                        EasySelected();
                        
                         break;
                     case 'n':
@@ -103,11 +113,12 @@ namespace Quiz
                         
                         break;
                     default:
-
-                        Console.WriteLine("The key input is invalid. Please input the keys provided."); // invalid prompt
-                         // clears to prevent stacking of error msg
-
-                        break;
+                        do
+                        {
+                            Console.WriteLine("The key input is invalid. Please input the keys provided."); // invalid prompt
+                                                                                                           // clears to prevent stacking of error msg
+                        } while (true);
+                    break;
                 }
             } while (string.IsNullOrEmpty(keybindString)); // while string is null or empty it will continue running the default for the switch.
 
@@ -116,19 +127,40 @@ namespace Quiz
 
        
 
-         static String EasySelected()
+         static Char EasySelected()
         {
-            String[][] QuestionArray = levelQuizLists();
-            Char[] QuestionSelect = { 'A','B','C'};
-            char input;
-            int passingMark = 0;
+            String[][] easyQuizArray = levelQuizLists();
+            
+            // variables
+            char keyBindInput = ' '; // input keybind
+            int passingMark = 0; // each passing mark
 
-            for (int i = 0; i < QuestionArray.Length; i++) // array 1 is selected and question 1 in array 1 is selected.
+            for (int i = 0; i < easyQuizArray.Length; i++) // array 1 is selected and question 1 in array 1 is selected.
             {
-                Console.WriteLine(QuestionArray);
+                Console.WriteLine(easyQuizArray[0][i]);
+                keyBindInput = Console.ReadLine().ToUpper()[0]; // converts input to upper so it isnt case sensitive unless user inputs wrong key
+
+                if (keyBindInput.Equals(easyQuizArray[1][i]))
+                {
+                    Console.WriteLine("Incorrect");
+                    Thread.Sleep(700); // adds delay
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.WriteLine("+1 point");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                }
+
+                passingMark = passingMark++;
+                
+                
             }
 
-            return
+            Console.WriteLine($"You got {passingMark} out of {easyQuizArray[0].Length} right");
+
+            return keyBindInput;
         }
 
         /*
