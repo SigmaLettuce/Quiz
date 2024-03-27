@@ -14,9 +14,10 @@ namespace Quiz
         {
             // Storing typed string method inputName in a string variable.
             string nameRead = inputName();
-       
+            String[][] lvlQuiz = levelQuizLists();
+
             Console.WriteLine($"Kia Ora, {nameRead}");
-            Thread.Sleep(700);
+            Thread.Sleep(700); // adds delay to the clearing of the console to allow level selection method to be called on a blank console.
             Console.Clear();
 
             LevelSelect();
@@ -108,13 +109,42 @@ namespace Quiz
 
                         break;
                 }
-            } while (string.IsNullOrWhiteSpace(keybindString)); // while string is null or whitespace it will continue running the default for the switch.
+            } while (string.IsNullOrEmpty(keybindString)); // while string is null or empty it will continue running the default for the switch.
 
             return keybindString; // returns key entered.
         }
 
-         
+       
 
+         static String EasySelected()
+        {
+            String[][] QuestionArray = levelQuizLists();
+            Char[] QuestionSelect = { 'A','B','C'};
+            char input;
+            int passingMark = 0;
+
+            for (int i = 0; i < QuestionArray.Length; i++) // array 1 is selected and question 1 in array 1 is selected.
+            {
+                Console.WriteLine(QuestionArray);
+            }
+
+            return
+        }
+
+        /*
+        static String NormalSelected()
+        {
+
+            return
+        }
+
+         static String HardSelected()
+        {
+
+            return
+        }
+
+        */
 
         //if keybind[i]
 
@@ -131,8 +161,10 @@ namespace Quiz
         }
         */
 
-        static String[][] levelQuizLists(string[][] lvlStorage) // This method contains all the questions and answers in lists.
+        static String[][] levelQuizLists() // This method contains all the questions and answers in arrays, then stores the arrays in another array.
         {
+
+            // I am using a jagged array to purpose a specific method to store my questiions and answers instead of taking up space in the methods for the level difficulties.
 
             // easy level consists of 7 questions.
 
@@ -145,15 +177,21 @@ namespace Quiz
 
             // normal level consists of 10 questions.
 
-            String[] normalLvlQuestions = { };
+            String[] normalLvlQuestions = { "When was Tiriti o Waitangi signed by the Monarch and Maori chiefs?\nA) 1776\nB) 1840\nC) 20 BC", // Q1
+            "What is the name of the Maori New Year?\nA) Tangata whenua\nB) Matariki\nC) Whero", // Q2
+            "Which action began the Flagstaff War?\nA) The creation of the New Zealand flag, becoming controversial between British and Maori figures of history\nB) The creation of the American flag in July 4th, 1960\nC) Hone Heke chopping down the flagstaff in Kororareka", // Q3
+            "When did the Flagstaff War begin?\nA) 11 Mar 1845\nB) 12 Mar 1845\nC) 14 Mar 1845", // Q4
+            "How old is Hone Heke?\nA) 43\nB) 20\nC) He is dead", // Q5
+            "What was the problem with the Tiriti which begun the outbreak of war?\nA) Error in translation\nB) ",
+            }; 
 
             // hard level consists of 17 questions.
 
-            String[] hardLvlQuestions = { };
+            String[] hardLvlQuestions = { "" };
 
             // easy level answers.
 
-            String[] easyLvlAnswers = { };
+            String[] easyLvlAnswers = { "A", "A", "B", "A", "A" };
 
             // normal level answers.
 
@@ -172,8 +210,8 @@ namespace Quiz
 
             // stores lists in array
 
-            String[][] quizListArray = {easyLvlQuestions, easyLvlAnswers, normalLvlQuestions, normalLvlAnswers, hardLvlQuestions, hardLvlAnswers};
-
+            String[][] quizListArray = {easyLvlQuestions, easyLvlAnswers, normalLvlQuestions, normalLvlAnswers, hardLvlQuestions, hardLvlAnswers}; // final array
+            // array of arrays require double square brackets such as [][]. the first bracket contains which array is selected and the second bracket contains which in that array is selected.
             return quizListArray;
         }
     }
