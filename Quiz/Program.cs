@@ -13,13 +13,10 @@ namespace Quiz
         static void Main(string[] args) // main method
         {
             // Storing typed string method inputName in a string variable.
-            string nameRead = inputName();
+            // string nameRead = inputName();
             String[][] lvlQuiz = levelQuizLists();
 
-            Console.WriteLine($"Kia Ora, {nameRead}");
-            Thread.Sleep(700); // adds delay to the clearing of the console to allow level selection method to be called on a blank console.
-            Console.Clear();
-
+            inputName();
             LevelSelect();
 
             // Level selecting
@@ -34,6 +31,7 @@ namespace Quiz
         {
             // string variable used to store the entered value for name.
             string nameEntered;
+            
             Console.WriteLine("Proceed with your name, please :");
 
             // input 
@@ -42,11 +40,28 @@ namespace Quiz
             // string variable for boundary
             int nameEnteredLimit = nameEntered.Length;
 
-            if (nameEntered )
-            {
+            // bool variable Limiter
+            bool instanceLimit = nameEnteredLimit > 1 || nameEnteredLimit < 29; // the boolean is named instance limiter because in the instance of a name being entered under or above a limit it provides this boolean
 
-            }
-            return nameEntered;
+            do
+            {
+                if (instanceLimit)
+                {
+                    Console.WriteLine($"Kia Ora, {nameEntered}");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Invalid number of characters. Please input an appropriate name.");
+                    Thread.Sleep(1200);
+                    Console.Clear();
+
+                }
+
+            } while (instanceLimit);
+        return nameEntered;
         }
 
         // 
