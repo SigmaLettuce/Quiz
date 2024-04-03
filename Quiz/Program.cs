@@ -41,7 +41,7 @@ namespace Quiz
             int nameEnteredLimit = nameEntered.Length;
 
             // bool variable Limiter
-            bool instanceLimit = nameEnteredLimit > 1 || nameEnteredLimit < 29; // the boolean is named instance limiter because in the instance of a name being entered under or above a limit it provides this boolean
+            bool instanceLimit = nameEnteredLimit > 0 | nameEnteredLimit < 29; // the boolean is named instance limiter because in the instance of a name being entered under or above a limit it provides this boolean
 
             do
             {
@@ -51,16 +51,16 @@ namespace Quiz
                     Thread.Sleep(700);
                     Console.Clear();
                 }
-                else
+                else 
                 {
-                    Console.Clear();
                     Console.WriteLine("Invalid number of characters. Please input an appropriate name.");
                     Thread.Sleep(1200);
                     Console.Clear();
 
                 }
 
-            } while (instanceLimit);
+            } while (instanceLimit = false);
+
         return nameEntered;
         }
 
@@ -128,11 +128,8 @@ namespace Quiz
                         
                         break;
                     default:
-                        do
-                        {
-                            Console.WriteLine("The key input is invalid. Please input the keys provided."); // invalid prompt
-                                                                                                           // clears to prevent stacking of error msg
-                        } while (true);
+                        Console.WriteLine("The key input is invalid. Please input the keys provided."); // invalid prompt
+                                                                                             
                     break;
                 }
             } while (string.IsNullOrEmpty(keybindString)); // while string is null or empty it will continue running the default for the switch.
@@ -150,6 +147,8 @@ namespace Quiz
             char keyBindInput = ' '; // input keybind
             int passingMark = 0; // each passing mark
 
+            // Console.WriteLine(easyQuizArray.Length); was checking length of array
+
             for (int i = 0; i < easyQuizArray.Length; i++) // array 1 is selected and question 1 in array 1 is selected.
             {
                 Console.WriteLine(easyQuizArray[0][i]);
@@ -157,23 +156,23 @@ namespace Quiz
 
                 if (keyBindInput.Equals(easyQuizArray[1][i]))
                 {
-                    Console.WriteLine("Incorrect");
+                    Console.WriteLine("+1 point");
                     Thread.Sleep(700); // adds delay
                     Console.Clear();
                 }
                 else
                 {
-                    Console.WriteLine("+1 point");
+                    Console.WriteLine("Incorrect");
                     Thread.Sleep(700);
                     Console.Clear();
                 }
 
-                passingMark = passingMark++;
+                passingMark = passingMark + 1;
                 
                 
             }
 
-            Console.WriteLine($"You got {passingMark} out of {easyQuizArray[0].Length} right");
+            Console.WriteLine($"You got {passingMark} out of {easyQuizArray[1].Length} right");
 
             return keyBindInput;
         }
@@ -261,6 +260,7 @@ namespace Quiz
             // array of arrays require double square brackets such as [][]. the first bracket contains which array is selected and the second bracket contains which in that array is selected.
             return quizListArray;
         }
+        
     }
 
 }
