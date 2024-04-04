@@ -16,6 +16,7 @@ namespace Quiz
             // string nameRead = inputName();
             String[][] lvlQuiz = levelQuizLists();
 
+            Debugging();
             inputName();
             LevelSelect();
 
@@ -41,7 +42,7 @@ namespace Quiz
             int nameEnteredLimit = nameEntered.Length;
 
             // bool variable Limiter
-            bool instanceLimit = nameEnteredLimit > 0 | nameEnteredLimit < 29; // the boolean is named instance limiter because in the instance of a name being entered under or above a limit it provides this boolean
+            bool instanceLimit = nameEnteredLimit > 2 && nameEnteredLimit < 29; // the boolean is named instance limiter because in the instance of a name being entered under or above a limit it provides this boolean
 
                 if (instanceLimit)
                 {
@@ -143,19 +144,18 @@ namespace Quiz
         {
             String[][] easyQuizArray = levelQuizLists();
             
+
             // variables
             char keyBindInput = ' '; // input keybind
             int passingMark = 0; // each passing mark
 
-            // Console.WriteLine(easyQuizArray.Length); was checking length of array
-
             for (int i = 0; i < easyQuizArray[1].Length; i++) // array 1 is selected and question 1 in array 1 is selected.
             {
-                Console.WriteLine(easyQuizArray[0][i]);
-                keyBindInput = Convert.ToChar(Console.ReadLine().ToUpper()[0]); // converts input to upper so it isnt case sensitive unless user inputs wrong key
+                Console.WriteLine(easyQuizArray[0][i]); // prints question every time for loop circles full
+                keyBindInput = Console.ReadLine().ToUpper()[0]; // converts input to upper so it isnt case sensitive unless user inputs wrong key
 
 
-                if (keyBindInput.Equals(easyQuizArray[1][i]))
+                if (keyBindInput.Equals(easyQuizArray[1][i])) // if input is the first loops answer, correct
                 {
                     Console.WriteLine("+1 point");
                     Thread.Sleep(700); // adds delay
@@ -284,6 +284,26 @@ namespace Quiz
             String[][] quizListArray = {easyLvlQuestions, easyLvlAnswers, normalLvlQuestions, normalLvlAnswers, hardLvlQuestions, hardLvlAnswers}; // final array
             // array of arrays require double square brackets such as [][]. the first bracket contains which array is selected and the second bracket contains which in that array is selected.
             return quizListArray;
+         
+        }
+
+        static String[][] Debugging()
+        {
+            String[][] Array = levelQuizLists();
+
+            for (int i = 0; i < Array[1].Length; i++)
+            {
+                Console.WriteLine(Array[1][i]);
+                Thread.Sleep(1200);
+            }
+
+
+            // Questions print normally 
+
+            // Answers print normally
+
+
+            return Array;
         }
         
     }
