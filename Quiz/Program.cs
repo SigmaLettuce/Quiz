@@ -16,7 +16,7 @@ namespace Quiz
             // string nameRead = inputName();
             String[][] lvlQuiz = levelQuizLists();
 
-            Debugging();
+            // Debugging();
             inputName();
             LevelSelect();
 
@@ -143,19 +143,20 @@ namespace Quiz
          static Char EasySelected()
         {
             String[][] easyQuizArray = levelQuizLists();
-            
+            String[] easyArrQuestions = easyQuizArray[0];
+            String[] easyArrAnswers = easyQuizArray[1];
 
             // variables
             char keyBindInput = ' '; // input keybind
             int passingMark = 0; // each passing mark
 
-            for (int i = 0; i < easyQuizArray[1].Length; i++) // array 1 is selected and question 1 in array 1 is selected.
+            for (int i = 0; i < easyArrQuestions.Length; i++) // array 1 is selected and question 1 in array 1 is selected.
             {
-                Console.WriteLine(easyQuizArray[0][i]); // prints question every time for loop circles full
+                Console.WriteLine(easyArrQuestions[i]); // prints question every time for loop circles full
                 keyBindInput = Console.ReadLine().ToUpper()[0]; // converts input to upper so it isnt case sensitive unless user inputs wrong key
 
 
-                if (keyBindInput.Equals(easyQuizArray[1][i])) // if input is the first loops answer, correct
+                if (keyBindInput == easyArrAnswers) // if input is the first loops answer, correct
                 {
                     Console.WriteLine("+1 point");
                     Thread.Sleep(700); // adds delay
@@ -174,7 +175,7 @@ namespace Quiz
                 
             }
 
-            Console.WriteLine($"You got {passingMark} out of {easyQuizArray[1].Length} right");
+            Console.WriteLine($"You got {passingMark} out of {easyArrQuestions.Length} right");
 
             return keyBindInput;
         }
@@ -194,7 +195,7 @@ namespace Quiz
             for (int i = 0; i < normalQuizArray[3].Length; i++) // array 1 is selected and question 1 in array 1 is selected.
             {
                 Console.WriteLine(normalQuizArray[2][i]);
-                keyBindInput = (Console.ReadLine().ToUpper()[0]); // converts input to upper so it isnt case sensitive unless user inputs wrong key
+                keyBindInput = Console.ReadLine().ToUpper()[0]; // converts input to upper so it isnt case sensitive unless user inputs wrong key
 
                 if (keyBindInput.Equals(normalQuizArray[3][i]))
                 {
@@ -287,6 +288,7 @@ namespace Quiz
          
         }
 
+        /*
         static String[][] Debugging()
         {
             String[][] Array = levelQuizLists();
@@ -304,9 +306,11 @@ namespace Quiz
 
 
             return Array;
+        */
+
         }
         
     }
 
-}
+
 
