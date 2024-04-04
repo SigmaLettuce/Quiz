@@ -143,8 +143,9 @@ namespace Quiz
          static Char EasySelected()
         {
             String[][] easyQuizArray = levelQuizLists();
+            Char[][] answer = levelQuizAns();
             String[] easyArrQuestions = easyQuizArray[0];
-            String[] easyArrAnswers = easyQuizArray[1];
+            Char[] easyArrAnswers = answer[0];
 
             // variables
             char keyBindInput = ' '; // input keybind
@@ -156,7 +157,7 @@ namespace Quiz
                 keyBindInput = Console.ReadLine().ToUpper()[0]; // converts input to upper so it isnt case sensitive unless user inputs wrong key
 
 
-                if (keyBindInput == easyArrAnswers) // if input is the first loops answer, correct
+                if (keyBindInput.Equals(easyArrAnswers[i])) // if input is the first loops answer, correct
                 {
                     Console.WriteLine("+1 point");
                     Thread.Sleep(700); // adds delay
@@ -233,7 +234,7 @@ namespace Quiz
         //if keybind[i]
 
 
-        static String[][] levelQuizLists() // This method contains all the questions and answers in arrays, then stores the arrays in another array.
+        static String[][] levelQuizQuestions() // This method contains all the questions and answers in arrays, then stores the arrays in another array.
         {
 
             // I am using a jagged array to purpose a specific method to store my questiions and answers instead of taking up space in the methods for the level difficulties.
@@ -261,6 +262,19 @@ namespace Quiz
 
             String[] hardLvlQuestions = { "" };
 
+            // stores array of questions in array method
+
+            String[][] quizListArray = {easyLvlQuestions, normalLvlQuestions, hardLvlQuestions}; // final array
+            // array of arrays require double square brackets such as [][]. the first bracket contains which array is selected and the second bracket contains which in that array is selected.
+            return quizListArray;
+
+         
+        }
+
+        static Char[][] levelQuizAnswers()
+        {
+            Char[] AnswersEasy = { 'A', 'A', 'B', 'A', 'A' };
+
             // easy level answers.
 
             String[] easyLvlAnswers = { "A", "A", "B", "A", "A" };
@@ -279,13 +293,11 @@ namespace Quiz
 
             // no static variables
 
+            // note for lunch: convert all of these into characters.
 
-            // stores lists in array
+            Char[][] quizListAnsArray = {AnswersEasy};
 
-            String[][] quizListArray = {easyLvlQuestions, easyLvlAnswers, normalLvlQuestions, normalLvlAnswers, hardLvlQuestions, hardLvlAnswers}; // final array
-            // array of arrays require double square brackets such as [][]. the first bracket contains which array is selected and the second bracket contains which in that array is selected.
-            return quizListArray;
-         
+            return quizListAnsArray;
         }
 
         /*
