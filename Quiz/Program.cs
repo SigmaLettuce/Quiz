@@ -43,8 +43,6 @@ namespace Quiz
             // bool variable Limiter
             bool instanceLimit = nameEnteredLimit > 0 | nameEnteredLimit < 29; // the boolean is named instance limiter because in the instance of a name being entered under or above a limit it provides this boolean
 
-            do
-            {
                 if (instanceLimit)
                 {
                     Console.WriteLine($"Kia Ora, {nameEntered}");
@@ -56,10 +54,8 @@ namespace Quiz
                     Console.WriteLine("Invalid number of characters. Please input an appropriate name.");
                     Thread.Sleep(1200);
                     Console.Clear();
-
+                    inputName();
                 }
-
-            } while (instanceLimit = false);
 
         return nameEntered;
         }
@@ -116,9 +112,10 @@ namespace Quiz
                     case 'n':
                         //Normal selected
                         Console.WriteLine("You have selected normal. ");
-                        
+                        Thread.Sleep(700);
+                        Console.Clear();
 
-                      
+                        NormalSelected();
                         break;
                     case 'h':
                         //Hard selected
@@ -127,9 +124,12 @@ namespace Quiz
                         
                         
                         break;
-                    default:
-                        Console.WriteLine("The key input is invalid. Please input the keys provided."); // invalid prompt
-                                                                                             
+                    default:                     
+                        Console.WriteLine("The key input is invalid. Please input the keys provided."); // invalid prompt    
+                        Thread.Sleep(700);
+                        Console.Clear();
+
+                        LevelSelect();
                     break;
                 }
             } while (string.IsNullOrEmpty(keybindString)); // while string is null or empty it will continue running the default for the switch.
@@ -149,16 +149,19 @@ namespace Quiz
 
             // Console.WriteLine(easyQuizArray.Length); was checking length of array
 
-            for (int i = 0; i < easyQuizArray.Length; i++) // array 1 is selected and question 1 in array 1 is selected.
+            for (int i = 0; i < easyQuizArray[1].Length; i++) // array 1 is selected and question 1 in array 1 is selected.
             {
                 Console.WriteLine(easyQuizArray[0][i]);
-                keyBindInput = Console.ReadLine().ToUpper()[0]; // converts input to upper so it isnt case sensitive unless user inputs wrong key
+                keyBindInput = Convert.ToChar(Console.ReadLine().ToUpper()[0]); // converts input to upper so it isnt case sensitive unless user inputs wrong key
+
 
                 if (keyBindInput.Equals(easyQuizArray[1][i]))
                 {
                     Console.WriteLine("+1 point");
                     Thread.Sleep(700); // adds delay
                     Console.Clear();
+
+                    passingMark = passingMark + 1;
                 }
                 else
                 {
@@ -167,7 +170,6 @@ namespace Quiz
                     Console.Clear();
                 }
 
-                passingMark = passingMark + 1;
                 
                 
             }
@@ -177,35 +179,58 @@ namespace Quiz
             return keyBindInput;
         }
 
-        /*
+        
         static String NormalSelected()
         {
+            String[][] normalQuizArray = levelQuizLists();
 
-            return
+            // variables
+            char keyBindInput = ' '; // input keybind
+            int passingMark = 0; // each passing mark
+            string keybindInputstr = keyBindInput + "";
+
+            // Console.WriteLine(easyQuizArray.Length); was checking length of array
+
+            for (int i = 0; i < normalQuizArray[3].Length; i++) // array 1 is selected and question 1 in array 1 is selected.
+            {
+                Console.WriteLine(normalQuizArray[2][i]);
+                keyBindInput = (Console.ReadLine().ToUpper()[0]); // converts input to upper so it isnt case sensitive unless user inputs wrong key
+
+                if (keyBindInput.Equals(normalQuizArray[3][i]))
+                {
+                    Console.WriteLine("+1 point");
+                    Thread.Sleep(700); // adds delay
+                    Console.Clear();
+
+                    passingMark = passingMark + 1;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                }
+
+
+
+            }
+
+            Console.WriteLine($"You got {passingMark} out of {normalQuizArray[3].Length} right");
+
+            return keybindInputstr;
         }
 
+        /*
          static String HardSelected()
         {
 
             return
         }
-
         */
+        
 
         //if keybind[i]
 
-        /*
-        static Int32 scoreRecieved() // This method gives user their score recieved via .. 
-        {
-
-
-
-
-
-
-            return;
-        }
-        */
 
         static String[][] levelQuizLists() // This method contains all the questions and answers in arrays, then stores the arrays in another array.
         {
